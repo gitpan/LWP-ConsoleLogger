@@ -19,7 +19,7 @@ my %module_build_args = (
     "Olaf Alders <olaf\@wundercounter.com>"
   ],
   "dist_name" => "LWP-ConsoleLogger",
-  "dist_version" => "0.000001",
+  "dist_version" => "0.000002",
   "license" => "perl",
   "module_name" => "LWP::ConsoleLogger",
   "recommends" => {},
@@ -33,6 +33,8 @@ my %module_build_args = (
     "Log::Dispatch" => 0,
     "Moose" => 0,
     "MooseX::StrictConstructor" => 0,
+    "MooseX::Types::Common::Numeric" => 0,
+    "MooseX::Types::Moose" => 0,
     "Sub::Exporter" => 0,
     "Term::Size::Any" => 0,
     "Text::SimpleTable::AutoWidth" => 0,

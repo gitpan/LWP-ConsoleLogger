@@ -47,6 +47,8 @@
             "Log::Dispatch" : "0",
             "Moose" : "0",
             "MooseX::StrictConstructor" : "0",
+            "MooseX::Types::Common::Numeric" : "0",
+            "MooseX::Types::Moose" : "0",
             "Sub::Exporter" : "0",
             "Term::Size::Any" : "0",
             "Text::SimpleTable::AutoWidth" : "0",
@@ -82,7 +84,7 @@
       "x_prepan_author" : "http://prepan.org/user/3Yz7PYrBzQ",
       "x_prepan_module" : "http://prepan.org/module/nXWJ8Y9sBDF"
    },
-   "version" : "0.000001",
+   "version" : "0.000002",
    "x_contributors" : [
       "Olaf Alders <olaf@wundersolutions.com>"
    ]

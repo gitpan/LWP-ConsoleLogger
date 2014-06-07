@@ -32,6 +32,8 @@ my %WriteMakefileArgs = (
     "Log::Dispatch" => 0,
     "Moose" => 0,
     "MooseX::StrictConstructor" => 0,
+    "MooseX::Types::Common::Numeric" => 0,
+    "MooseX::Types::Moose" => 0,
     "Sub::Exporter" => 0,
     "Term::Size::Any" => 0,
     "Text::SimpleTable::AutoWidth" => 0,
@@ -49,7 +51,7 @@ my %WriteMakefileArgs = (
     "URI::file" => 0,
     "WWW::Mechanize" => 0
   },
-  "VERSION" => "0.000001",
+  "VERSION" => "0.000002",
   "test" => {
     "TESTS" => "t/*.t t/LWP/*.t t/LWP/ConsoleLogger/*.t"
   }
@@ -68,6 +70,8 @@ my %FallbackPrereqs = (
   "Module::Build" => "0.3601",
   "Moose" => 0,
   "MooseX::StrictConstructor" => 0,
+  "MooseX::Types::Common::Numeric" => 0,
+  "MooseX::Types::Moose" => 0,
   "Path::Tiny" => 0,
   "Sub::Exporter" => 0,
   "Term::Size::Any" => 0,
