@@ -21,7 +21,7 @@ my %WriteMakefileArgs = (
   },
   "DISTNAME" => "LWP-ConsoleLogger",
   "EXE_FILES" => [],
-  "LICENSE" => "perl",
+  "LICENSE" => "artistic_2",
   "NAME" => "LWP::ConsoleLogger",
   "PREREQ_PM" => {
     "DateTime" => 0,
@@ -51,7 +51,7 @@ my %WriteMakefileArgs = (
     "URI::file" => 0,
     "WWW::Mechanize" => 0
   },
-  "VERSION" => "0.000002",
+  "VERSION" => "0.000003",
   "test" => {
     "TESTS" => "t/*.t t/LWP/*.t t/LWP/ConsoleLogger/*.t"
   }

@@ -21,6 +21,11 @@ __DATA__
 Olaf
 Alders
 olaf
+MaxMind
+Inc
+Сергей
+Романов
+sromanov
 lib
 LWP
 ConsoleLogger

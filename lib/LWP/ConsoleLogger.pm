@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package LWP::ConsoleLogger;
-$LWP::ConsoleLogger::VERSION = '0.000002';
+$LWP::ConsoleLogger::VERSION = '0.000003';
 use DateTime qw();
 use Email::MIME qw();
 use Email::MIME::ContentType qw( parse_content_type );
@@ -263,7 +263,7 @@ sub _log_text {
     return unless $content;
 
     if ( $self->text_pre_filter ) {
-        $content = $self->content_pre_filter->( $content, $content_type );
+        $content = $self->text_pre_filter->( $content, $content_type );
     }
 
     return unless $content;
@@ -312,7 +312,7 @@ LWP::ConsoleLogger - Easy LWP tracing and debugging
 
 =head1 VERSION
 
-version 0.000002
+version 0.000003
 
 =head1 SYNOPSIS
 
@@ -545,10 +545,11 @@ Olaf Alders <olaf@wundercounter.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Olaf Alders.
+This software is Copyright (c) 2014 by MaxMind, Inc..
 
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
+This is free software, licensed under:
+
+  The Artistic License 2.0 (GPL Compatible)
 
 =cut
 
