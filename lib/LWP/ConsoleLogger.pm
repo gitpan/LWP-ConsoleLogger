@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package LWP::ConsoleLogger;
-$LWP::ConsoleLogger::VERSION = '0.000003';
+$LWP::ConsoleLogger::VERSION = '0.000004';
 use DateTime qw();
 use Email::MIME qw();
 use Email::MIME::ContentType qw( parse_content_type );
@@ -104,7 +104,13 @@ sub request_callback {
     my $uri_without_query = $req->uri->clone;
     $uri_without_query->query( undef );
     $self->logger->debug( $req->method . q{ } . $uri_without_query . "\n" );
-    $self->_log_params( $req );
+
+    if ( $req->method eq 'GET' ) {
+        $self->_log_params( $req, 'GET' );
+    }
+    else {
+       $self->_log_params( $req, $_ ) for ( 'GET', 'POST' );
+    }
 
     $self->_log_headers( 'request', $req->headers );
 
@@ -144,14 +150,14 @@ sub _log_headers {
 }
 
 sub _log_params {
-    my ( $self, $req ) = @_;
+    my ( $self, $req, $method ) = @_;
 
     return if !$self->dump_params;
 
     my %params;
     my $uri = $req->uri;
 
-    if ( $req->method eq 'GET' ) {
+    if ( $method eq 'GET' ) {
         my @params = $uri->query_param;
         return unless @params;
 
@@ -184,7 +190,7 @@ sub _log_params {
         $t->row( $name, $_ ) for sort @values;
     }
 
-    $self->logger->debug( " Params:\n" . $t->draw );
+    $self->logger->debug( "$method Params:\n" . $t->draw );
 }
 
 sub _log_cookies {
@@ -312,12 +318,12 @@ LWP::ConsoleLogger - Easy LWP tracing and debugging
 
 =head1 VERSION
 
-version 0.000003
+version 0.000004
 
 =head1 SYNOPSIS
 
     my $ua = LWP::UserAgent->new( cookie_jar => {} );
-    my $logger = LWP::ConsoleLogger->new(
+    my $console_logger = LWP::Consoleconsole_logger->new(
         dump_content       => 1,
         dump_text          => 1,
         content_pre_filter => sub {
@@ -327,7 +333,7 @@ version 0.000003
             # mangle content here
             ...
 
-            return $content;
+                return $content;
         },
     );
 
@@ -336,9 +342,9 @@ version 0.000003
         'Accept-Encoding' => scalar HTTP::Message::decodable() );
 
     $ua->add_handler( 'response_done',
-        sub { $logger->response_callback( @_ ) } );
+        sub { $console_logger->response_callback( @_ ) } );
     $ua->add_handler( 'request_send',
-        sub { $logger->request_callback( @_ ) } );
+        sub { $console_logger->request_callback( @_ ) } );
 
     # now watch debugging output to your screen
     $ua->get( 'http://nytimes.com/' );
@@ -346,16 +352,16 @@ version 0.000003
     #################################################################
 
     # or start the easy way
-    use LWP::ConsoleLogger::Easy qw( debug_ua );
+    use LWP::Consoleconsole_logger::Easy qw( debug_ua );
     use WWW::Mechanize;
 
-    my $mech = WWW::Mechanize->new; # or LWP::UserAgent->new() etc
-    my $logger = debug_ua( $mech );
+    my $mech           = WWW::Mechanize->new;   # or LWP::UserAgent->new() etc
+    my $console_logger = debug_ua( $mech );
     $mech->get( $some_url );
 
     # now watch the console for debugging output
     # turn off header dumps
-    $logger->dump_headers( 0 );
+    $console_logger->dump_headers( 0 );
 
     $mech->get( $some_other_url );
 
@@ -484,10 +490,14 @@ screen.  Defaults to false.
 Boolean value. If true, both request and response headers will be dumped to
 your screen.  Defaults to true.
 
+Headers are dumped in alphabetical order.
+
 =head2 dump_params( 0|1 )
 
 Boolean value. If true, both GET and POST params will be dumped to your screen.
 Defaults to true.
+
+Params are dumped in alphabetical order.
 
 =head2 dump_text( 0|1 )
 
@@ -500,11 +510,47 @@ Subroutine reference.  This allows you to manipulate content before it is
 dumped.  A common use case might be stripping headers and footers away from
 HTML content to make it easier to detect changes in the body of the page.
 
+    $easy_logger->content_pre_filter(
+    sub {
+        my $content      = shift;
+        my $content_type = shift; # the value of the Content-Type header
+        if (   $content_type =~ m{html}i
+            && $content =~ m{<!--\scontent\s-->(.*)<!--\sfooter}msx ) {
+            return $1;
+        }
+        return $content;
+    }
+    );
+
+Try to make sure that your content mangling doesn't return broken HTML as that
+may not play with with L<HTML::Restrict>.
+
 =head2 text_pre_filter( sub { ... } )
 
 Subroutine reference.  This allows you to manipulate text before it is dumped.
 A common use case might be stripping away duplicate whitespace and/or newlines
-in order to improve formatting.
+in order to improve formatting.  Keep in mind that the C<content_pre_filter>
+will have been applied to the content which is passed to the text_pre_filter.
+The idea is that you can strip away an HTML you don't care about in the
+content_pre_filter phase and then process the remainder of the content in the
+text_pre_filter.
+
+    $easy_logger->text_pre_filter(
+    sub {
+        my $content      = shift;
+        my $content_type = shift; # the value of the Content-Type header
+
+        # do something with the content
+        # ...
+
+        return $content;
+    }
+    );
+
+If this is HTML content, L<HTML::Restrict> will be applied after the
+text_pre_filter has been run.  LWP::ConsoleLogger will then strip away some
+whitespace and newlines from processed HTML in its own opinionated way, in
+order to present you with more readable text.
 
 =head2 html_restrict( HTML::Restrict->new( ... ) )
 
