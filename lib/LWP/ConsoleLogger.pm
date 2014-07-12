@@ -2,7 +2,8 @@ use strict;
 use warnings;
 
 package LWP::ConsoleLogger;
-$LWP::ConsoleLogger::VERSION = '0.000004';
+$LWP::ConsoleLogger::VERSION = '0.000005';
+use Data::Printer;
 use DateTime qw();
 use Email::MIME qw();
 use Email::MIME::ContentType qw( parse_content_type );
@@ -13,10 +14,13 @@ use Moose;
 use MooseX::StrictConstructor;
 use MooseX::Types::Common::Numeric qw( PositiveInt );
 use MooseX::Types::Moose qw( Bool CodeRef );
+use Parse::MIME qw( parse_mime_type );
 use Term::Size::Any qw( chars );
 use Text::SimpleTable::AutoWidth qw();
+use Try::Tiny;
 use URI::Query qw();
 use URI::QueryParam qw();
+use XML::Simple qw( XMLin );
 
 sub BUILD {
     my $self = shift;
@@ -109,7 +113,7 @@ sub request_callback {
         $self->_log_params( $req, 'GET' );
     }
     else {
-       $self->_log_params( $req, $_ ) for ( 'GET', 'POST' );
+        $self->_log_params( $req, $_ ) for ( 'GET', 'POST' );
     }
 
     $self->_log_headers( 'request', $req->headers );
@@ -274,10 +278,18 @@ sub _log_text {
 
     return unless $content;
 
-    if ( $content_type =~ m{html}i ) {
+    my ( $type, $subtype ) = parse_mime_type( $content_type );
+    if ( lc $subtype eq 'html' ) {
         $content = $self->html_restrict->process( $content );
         $content =~ s{\s+}{ }g;
         $content =~ s{\n{2,}}{\n\n}g;
+    }
+    elsif ( lc $subtype eq 'xml' ) {
+        try {
+            my $pretty = XMLin( $content, KeepRoot => 1 );
+            $content = p $pretty;
+        }
+        catch { warn $_ };
     }
 
     my $t = Text::SimpleTable::AutoWidth->new();
@@ -318,7 +330,7 @@ LWP::ConsoleLogger - Easy LWP tracing and debugging
 
 =head1 VERSION
 
-version 0.000004
+version 0.000005
 
 =head1 SYNOPSIS
 
