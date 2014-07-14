@@ -1,5 +1,5 @@
 package LWP::ConsoleLogger::Easy;
-$LWP::ConsoleLogger::Easy::VERSION = '0.000006';
+$LWP::ConsoleLogger::Easy::VERSION = '0.000007';
 use strict;
 use warnings;
 
@@ -39,7 +39,7 @@ LWP::ConsoleLogger::Easy - Start logging your LWP useragent the easy way.
 
 =head1 VERSION
 
-version 0.000006
+version 0.000007
 
 =head1 SYNOPSIS
 
