@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package LWP::ConsoleLogger;
-$LWP::ConsoleLogger::VERSION = '0.000005';
+$LWP::ConsoleLogger::VERSION = '0.000006';
 use Data::Printer;
 use DateTime qw();
 use Email::MIME qw();
@@ -330,7 +330,7 @@ LWP::ConsoleLogger - Easy LWP tracing and debugging
 
 =head1 VERSION
 
-version 0.000005
+version 0.000006
 
 =head1 SYNOPSIS
 
@@ -590,7 +590,7 @@ Aside from the BETA warnings, I should say that I've written this to suit my
 needs and there are a lot of things I haven't considered.  For example, I'm
 really only dealing with GET and POST.  There's probably a much better way of
 getting the POST params than what I copied in a hurry from a very old module.
-Also, I'm mostly assuming that the content will be text or HTML.
+Also, I'm mostly assuming that the content will be text, HTML or XML.
 
 The test suite is not very robust either.  If you'd like to contribute to this
 module and you can't find an appropriate test, do add something to the example
