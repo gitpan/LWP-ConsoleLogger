@@ -19,7 +19,7 @@ my %module_build_args = (
     "Olaf Alders <olaf\@wundercounter.com>"
   ],
   "dist_name" => "LWP-ConsoleLogger",
-  "dist_version" => "0.000007",
+  "dist_version" => "0.000008",
   "license" => "artistic_2",
   "module_name" => "LWP::ConsoleLogger",
   "recommends" => {},
