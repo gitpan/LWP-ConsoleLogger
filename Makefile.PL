@@ -10,7 +10,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Easy LWP tracing and debugging",
+  "ABSTRACT" => "LWP tracing and debugging",
   "AUTHOR" => "Olaf Alders <olaf\@wundercounter.com>",
   "BUILD_REQUIRES" => {
     "Module::Build" => "0.3601"
@@ -58,7 +58,7 @@ my %WriteMakefileArgs = (
     "URI::file" => 0,
     "WWW::Mechanize" => 0
   },
-  "VERSION" => "0.000008",
+  "VERSION" => "0.000009",
   "test" => {
     "TESTS" => "t/*.t t/LWP/*.t t/LWP/ConsoleLogger/*.t"
   }

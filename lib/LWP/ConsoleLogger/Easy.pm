@@ -1,5 +1,5 @@
 package LWP::ConsoleLogger::Easy;
-$LWP::ConsoleLogger::Easy::VERSION = '0.000008';
+$LWP::ConsoleLogger::Easy::VERSION = '0.000009';
 use strict;
 use warnings;
 
@@ -35,11 +35,11 @@ sub debug_ua {
 
 =head1 NAME
 
-LWP::ConsoleLogger::Easy - Start logging your LWP useragent the easy way.
+LWP::ConsoleLogger::Easy - Easy LWP tracing and debugging
 
 =head1 VERSION
 
-version 0.000008
+version 0.000009
 
 =head1 SYNOPSIS
 
@@ -90,6 +90,8 @@ This is free software, licensed under:
 =cut
 
 __END__
+
+# ABSTRACT: Easy LWP tracing and debugging
 
 
 # ABSTRACT: Start logging your LWP useragent the easy way.

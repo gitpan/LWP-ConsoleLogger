@@ -14,12 +14,12 @@ my %module_build_args = (
     "ExtUtils::MakeMaker" => "6.30",
     "Module::Build" => "0.3601"
   },
-  "dist_abstract" => "Easy LWP tracing and debugging",
+  "dist_abstract" => "LWP tracing and debugging",
   "dist_author" => [
     "Olaf Alders <olaf\@wundercounter.com>"
   ],
   "dist_name" => "LWP-ConsoleLogger",
-  "dist_version" => "0.000008",
+  "dist_version" => "0.000009",
   "license" => "artistic_2",
   "module_name" => "LWP::ConsoleLogger",
   "recommends" => {},

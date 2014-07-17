@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package LWP::ConsoleLogger;
-$LWP::ConsoleLogger::VERSION = '0.000008';
+$LWP::ConsoleLogger::VERSION = '0.000009';
 use Data::Printer { end_separator => 1, hash_separator => ' => ' };
 use DateTime qw();
 use Email::MIME qw();
@@ -293,6 +293,7 @@ sub _log_text {
         try {
             my $pretty = XMLin( $content, KeepRoot => 1 );
             $content = p $pretty;
+            $content =~ s{^\\ }{}; # don't prefix HashRef with slash
         }
         catch { $t->row( "Error parsing XML: $_" ) };
     }
@@ -326,6 +327,7 @@ sub _draw {
     my $preamble = shift;
 
     return if !$t->rows;
+    $self->logger->debug( $preamble ) if $preamble;
     $self->logger->debug( $t->draw );
 }
 
@@ -337,11 +339,11 @@ sub _draw {
 
 =head1 NAME
 
-LWP::ConsoleLogger - Easy LWP tracing and debugging
+LWP::ConsoleLogger - LWP tracing and debugging
 
 =head1 VERSION
 
-version 0.000008
+version 0.000009
 
 =head1 SYNOPSIS
 
@@ -624,5 +626,5 @@ This is free software, licensed under:
 
 __END__
 
-# ABSTRACT: Easy LWP tracing and debugging
+# ABSTRACT: LWP tracing and debugging
 
