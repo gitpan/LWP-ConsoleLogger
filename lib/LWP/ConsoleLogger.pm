@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package LWP::ConsoleLogger;
-$LWP::ConsoleLogger::VERSION = '0.000009';
+$LWP::ConsoleLogger::VERSION = '0.000010';
 use Data::Printer { end_separator => 1, hash_separator => ' => ' };
 use DateTime qw();
 use Email::MIME qw();
@@ -343,12 +343,12 @@ LWP::ConsoleLogger - LWP tracing and debugging
 
 =head1 VERSION
 
-version 0.000009
+version 0.000010
 
 =head1 SYNOPSIS
 
     my $ua = LWP::UserAgent->new( cookie_jar => {} );
-    my $console_logger = LWP::Consoleconsole_logger->new(
+    my $console_logger = LWP::ConsoleLogger->new(
         dump_content       => 1,
         dump_text          => 1,
         content_pre_filter => sub {
@@ -377,7 +377,7 @@ version 0.000009
     #################################################################
 
     # or start the easy way
-    use LWP::Consoleconsole_logger::Easy qw( debug_ua );
+    use LWP::ConsoleLogger::Easy qw( debug_ua );
     use WWW::Mechanize;
 
     my $mech           = WWW::Mechanize->new;   # or LWP::UserAgent->new() etc

@@ -10,6 +10,7 @@ Makefile.PL
 README
 cpanfile
 dist.ini
+examples/metcpan-client.pl
 examples/new-york-times.pl
 lib/LWP/ConsoleLogger.pm
 lib/LWP/ConsoleLogger/Easy.pm
