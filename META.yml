@@ -1,0 +1,64 @@
+---
+abstract: 'LWP tracing and debugging'
+author:
+  - 'Olaf Alders <olaf@wundercounter.com>'
+build_requires:
+  HTTP::Request: '0'
+  LWP::UserAgent: '0'
+  Log::Dispatch::Array: '0'
+  Module::Build: '0.28'
+  Path::Tiny: '0'
+  Plack::Test: '0'
+  Plack::Test::Agent: '0'
+  Test::Fatal: '0'
+  Test::Most: '0'
+  URI::file: '0'
+  WWW::Mechanize: '0'
+configure_requires:
+  ExtUtils::MakeMaker: '0'
+  Module::Build: '0.28'
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.140640'
+license: artistic_2
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: LWP-ConsoleLogger
+no_index:
+  directory:
+    - t
+    - xt
+    - examples
+requires:
+  Data::Printer: '0'
+  DateTime: '0'
+  Email::MIME: '0'
+  Email::MIME::ContentType: '0'
+  HTML::Restrict: '0'
+  HTTP::CookieMonster: '0'
+  Log::Dispatch: '0'
+  Moose: '0'
+  MooseX::StrictConstructor: '0'
+  MooseX::Types::Common::Numeric: '0'
+  MooseX::Types::Moose: '0'
+  Parse::MIME: '0'
+  Sub::Exporter: '0'
+  Term::Size::Any: '0'
+  Text::SimpleTable::AutoWidth: '0'
+  Try::Tiny: '0'
+  URI::Query: '0'
+  URI::QueryParam: '0'
+  XML::Simple: '0'
+  perl: '5.006'
+  strict: '0'
+  warnings: '0'
+resources:
+  Prepan_author: http://prepan.org/user/3Yz7PYrBzQ
+  Prepan_module: http://prepan.org/module/nXWJ8Y9sBDF
+  bugtracker: http://github.com/oalders/LWP-ConsoleLogger/issues
+  homepage: https://github.com/oalders/lwp-consolelogger
+  repository: https://github.com/oalders/lwp-consolelogger.git
+version: '0.000011'
+x_contributors:
+  - 'Olaf Alders <olaf@wundersolutions.com>'
+  - 'Сергей Романов <sromanov-dev@yandex.ru>'

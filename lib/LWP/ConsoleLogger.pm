@@ -1,8 +1,10 @@
 use strict;
 use warnings;
 
+use 5.006;
+
 package LWP::ConsoleLogger;
-$LWP::ConsoleLogger::VERSION = '0.000010';
+$LWP::ConsoleLogger::VERSION = '0.000011';
 use Data::Printer { end_separator => 1, hash_separator => ' => ' };
 use DateTime qw();
 use Email::MIME qw();
@@ -343,7 +345,7 @@ LWP::ConsoleLogger - LWP tracing and debugging
 
 =head1 VERSION
 
-version 0.000010
+version 0.000011
 
 =head1 SYNOPSIS
 
