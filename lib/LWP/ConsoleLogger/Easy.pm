@@ -1,5 +1,5 @@
 package LWP::ConsoleLogger::Easy;
-$LWP::ConsoleLogger::Easy::VERSION = '0.000011';
+$LWP::ConsoleLogger::Easy::VERSION = '0.000012';
 use strict;
 use warnings;
 
@@ -39,7 +39,7 @@ LWP::ConsoleLogger::Easy - Easy LWP tracing and debugging
 
 =head1 VERSION
 
-version 0.000011
+version 0.000012
 
 =head1 SYNOPSIS
 
@@ -74,6 +74,11 @@ desire.
     $ua_logger->logger( Log::Dispatch->new(...) );
 
     $mech->get(...);
+
+=head2 EXAMPLES
+
+Please see the "examples" folder in this distribution for more ideas on how to
+use this module.
 
 =head1 AUTHOR
 

@@ -30,6 +30,7 @@ my %WriteMakefileArgs = (
     "Email::MIME::ContentType" => 0,
     "HTML::Restrict" => 0,
     "HTTP::CookieMonster" => 0,
+    "JSON::MaybeXS" => 0,
     "Log::Dispatch" => 0,
     "Moose" => 0,
     "MooseX::StrictConstructor" => 0,
@@ -58,7 +59,7 @@ my %WriteMakefileArgs = (
     "URI::file" => 0,
     "WWW::Mechanize" => 0
   },
-  "VERSION" => "0.000011",
+  "VERSION" => "0.000012",
   "test" => {
     "TESTS" => "t/*.t t/LWP/*.t t/LWP/ConsoleLogger/*.t"
   }
@@ -73,6 +74,7 @@ my %FallbackPrereqs = (
   "HTML::Restrict" => 0,
   "HTTP::CookieMonster" => 0,
   "HTTP::Request" => 0,
+  "JSON::MaybeXS" => 0,
   "LWP::UserAgent" => 0,
   "Log::Dispatch" => 0,
   "Log::Dispatch::Array" => 0,

@@ -11,7 +11,10 @@ Makefile.PL
 README
 cpanfile
 dist.ini
-examples/metcpan-client.pl
+examples/dump-only-headers.pl
+examples/html-in-text.pl
+examples/http-tiny-mech.pl
+examples/log-to-file.pl
 examples/new-york-times.pl
 lib/LWP/ConsoleLogger.pm
 lib/LWP/ConsoleLogger/Easy.pm

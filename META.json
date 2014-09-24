@@ -4,7 +4,7 @@
       "Olaf Alders <olaf@wundercounter.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.140640",
+   "generated_by" : "Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.142060",
    "license" : [
       "artistic_2"
    ],
@@ -46,6 +46,7 @@
             "Email::MIME::ContentType" : "0",
             "HTML::Restrict" : "0",
             "HTTP::CookieMonster" : "0",
+            "JSON::MaybeXS" : "0",
             "Log::Dispatch" : "0",
             "Moose" : "0",
             "MooseX::StrictConstructor" : "0",
@@ -93,7 +94,7 @@
       "x_prepan_author" : "http://prepan.org/user/3Yz7PYrBzQ",
       "x_prepan_module" : "http://prepan.org/module/nXWJ8Y9sBDF"
    },
-   "version" : "0.000011",
+   "version" : "0.000012",
    "x_contributors" : [
       "Olaf Alders <olaf@wundersolutions.com>",
       "Сергей Романов <sromanov-dev@yandex.ru>"

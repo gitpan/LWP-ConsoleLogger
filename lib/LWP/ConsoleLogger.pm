@@ -4,13 +4,14 @@ use warnings;
 use 5.006;
 
 package LWP::ConsoleLogger;
-$LWP::ConsoleLogger::VERSION = '0.000011';
+$LWP::ConsoleLogger::VERSION = '0.000012';
 use Data::Printer { end_separator => 1, hash_separator => ' => ' };
 use DateTime qw();
 use Email::MIME qw();
 use Email::MIME::ContentType qw( parse_content_type );
 use HTML::Restrict qw();
 use HTTP::CookieMonster qw();
+use JSON::MaybeXS qw( decode_json );
 use Log::Dispatch qw();
 use Moose;
 use MooseX::StrictConstructor;
@@ -299,6 +300,12 @@ sub _log_text {
         }
         catch { $t->row( "Error parsing XML: $_" ) };
     }
+    elsif ( lc $subtype eq 'json' ) {
+        try {
+            $content = p decode_json( $content );
+        }
+        catch { $t->row( "Error parsing JSON: $_" ) };
+    }
 
     $t->row( $content );
     $self->_draw( $t );
@@ -345,7 +352,7 @@ LWP::ConsoleLogger - LWP tracing and debugging
 
 =head1 VERSION
 
-version 0.000011
+version 0.000012
 
 =head1 SYNOPSIS
 

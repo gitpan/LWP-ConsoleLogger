@@ -19,7 +19,7 @@ my %module_build_args = (
     "Olaf Alders <olaf\@wundercounter.com>"
   ],
   "dist_name" => "LWP-ConsoleLogger",
-  "dist_version" => "0.000011",
+  "dist_version" => "0.000012",
   "license" => "artistic_2",
   "module_name" => "LWP::ConsoleLogger",
   "recommends" => {},
@@ -31,6 +31,7 @@ my %module_build_args = (
     "Email::MIME::ContentType" => 0,
     "HTML::Restrict" => 0,
     "HTTP::CookieMonster" => 0,
+    "JSON::MaybeXS" => 0,
     "Log::Dispatch" => 0,
     "Moose" => 0,
     "MooseX::StrictConstructor" => 0,
